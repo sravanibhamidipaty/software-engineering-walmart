@@ -53,10 +53,10 @@ Script reads several spreadsheets from [`forage-walmart-task-4`](https://github.
 ## ✅ Getting Started
 
 1. Clone the repo  
-2. Run the Java heap implementation under `/heap/`  
-3. Review the UML diagram in `/uml/` (PDF)  
-4. Review the ERD diagram in `/erd/` (PDF)  
-5. Run the Python ETL script under `/etl/`
+2. Run the Java heap implementation under `/PowerOfTwoMaxHeap.java/`  
+3. Review the UML diagram in `/UML.png/` (png)  
+4. Review the ERD diagram in `/ER Diagram/` (png)  
+5. Run the Python ETL script under `/Data Munging/`
 
 ```bash
-python3 etl/insert_shipping_data.py
+python3 'Data Munging'/insert_shipping_data.py
