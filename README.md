@@ -1,4 +1,4 @@
-# Walmart Data Processing and Integration Project
+# Advanced Software Engineering with Walmart USA
 
 This repository contains a collection of projects developed to support the Walmart shipping and data processing teams. It includes four different components:
 
