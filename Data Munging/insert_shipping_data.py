@@ -11,6 +11,48 @@ class DatabaseConnector:
         self.connection = sqlite3.connect(database_file)
         self.cursor = self.connection.cursor()
 
+    def create_tables(self):
+        self.cursor.execute("""
+                            CREATE TABLE IF NOT EXISTS product
+                            (
+                                id
+                                INTEGER
+                                PRIMARY
+                                KEY
+                                AUTOINCREMENT,
+                                name
+                                TEXT
+                                UNIQUE
+                            );
+                            """)
+        self.cursor.execute("""
+                            CREATE TABLE IF NOT EXISTS shipment
+                            (
+                                id
+                                INTEGER
+                                PRIMARY
+                                KEY
+                                AUTOINCREMENT,
+                                product_id
+                                INTEGER,
+                                quantity
+                                INTEGER,
+                                origin
+                                TEXT,
+                                destination
+                                TEXT,
+                                FOREIGN
+                                KEY
+                            (
+                                product_id
+                            ) REFERENCES product
+                            (
+                                id
+                            )
+                                );
+                            """)
+        self.connection.commit()
+
     def populate(self, spreadsheet_folder):
         """
         Populate the database with data imported from each spreadsheet.
@@ -138,5 +180,6 @@ class DatabaseConnector:
 
 if __name__ == "__main__":
     database_connector = DatabaseConnector("shipment_database.db")
-    database_connector.populate("./data")
+    database_connector.create_tables()
+    database_connector.populate("Data Munging/data")
     database_connector.close()
